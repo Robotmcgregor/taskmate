@@ -6,6 +6,57 @@
 
 {% block context %}
 <div class="container">
-    <h1>{{ todolist_text }}</h1>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <input type="text" class="form-control" name="task" placeholder="New Task?">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Task</button>
+      </form>
+    <br>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Done</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+    <tbody>
+
+
+        {% comment %} Loop through the models taskList models querry {% endcomment %}
+        {% for obj in all_tasks %}
+        {% comment %} If object is true {% endcomment %}
+            {% if obj.done %}
+
+                <tr class="table-success">
+                    <td>{{obj.task}} </th>
+                    <td>Completed</td>
+                    <td>Delete</td>
+                    <td>Edit</td>
+                </tr>
+
+            {% else %}
+
+                <tr>
+                    <td>{{obj.task}} </th>
+                    <td>Not Completed</td>
+                    <td>Delete</td>
+                    <td>Edit</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+    </table>
+    <br>
+
+
 </div>
 {% endblock context %}
+
+
