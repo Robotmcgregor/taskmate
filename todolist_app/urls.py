@@ -3,7 +3,8 @@ from todolist_app import views
 
 
 urlpatterns = [
-    path('', views.todolist, name='todolist'),
+    # path('', views.index, name='index'),
+    path('todolist', views.todolist, name='todolist'),
     path('contact/', views.contact, name='contact'),
     path('about-us/', views.about, name='about'),
     # path('task/delete/<task_id>', views.delete_task, name='delete_task'),
