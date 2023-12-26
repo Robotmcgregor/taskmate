@@ -7,10 +7,15 @@
 {% block context %}
 <div class="container">
     <br>
-    {% for message in messages %}
-    <p>{{message}}</p>
 
-    {% endfor %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <form method="POST">
         {% csrf_token %}
 
@@ -31,30 +36,30 @@
           </tr>
         </thead>
     <tbody>
+        {% if all_tasks %}
+            {% comment %} Loop through the models taskList models querry {% endcomment %}
+            {% for obj in all_tasks %}
+            {% comment %} If object is true {% endcomment %}
+                {% if obj.done %}
 
+                    <tr class="table-success">
+                        <td>{{obj.task}} </th>
+                        <td>Completed</td>
+                        <td>Delete</td>
+                        <td>Edit</td>
+                    </tr>
 
-        {% comment %} Loop through the models taskList models querry {% endcomment %}
-        {% for obj in all_tasks %}
-        {% comment %} If object is true {% endcomment %}
-            {% if obj.done %}
+                {% else %}
 
-                <tr class="table-success">
-                    <td>{{obj.task}} </th>
-                    <td>Completed</td>
-                    <td>Delete</td>
-                    <td>Edit</td>
-                </tr>
-
-            {% else %}
-
-                <tr>
-                    <td>{{obj.task}} </th>
-                    <td>Not Completed</td>
-                    <td>Delete</td>
-                    <td>Edit</td>
-                </tr>
-            {% endif %}
-        {% endfor %}
+                    <tr>
+                        <td>{{obj.task}} </th>
+                        <td>Not Completed</td>
+                        <td>Delete</td>
+                        <td>Edit</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     </tbody>
     </table>
     <br>
