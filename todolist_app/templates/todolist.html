@@ -37,14 +37,14 @@
 
     <br>
     <table class="table table-bordered">
-        {% comment %} <thead class="table-dark">
+        <thead class="table-dark">
           <tr>
             <th scope="col">Task</th>
             <th scope="col">Done</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
-        </thead> {% endcomment %}
+        </thead>
     <tbody>
         {% if all_tasks %}
             {% comment %} Loop through the models taskList models querry {% endcomment %}
@@ -74,7 +74,35 @@
         {% endif %}
     </tbody>
     </table>
-    <br>
+
+    {% comment %} <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+          <li class="page-item"><a class="page-link"><<</a></li>
+          <li class="page-item"><a class="page-link" href="#">{{ all_tasks.previous_page_namber }}</a></li>
+          <li class="page-item"><a class="page-link" href="#">{{all_tasks.number}}</a></li>
+          <li class="page-item"><a class="page-link" href="#">{{ all_tasks.next_page_namber }}</a></li>
+          <li class="page-item"><a class="page-link" href="#">>></a>
+          </li>
+        </ul>
+      </nav>
+
+    <br> {% endcomment %}
+
+        <!-- Pagination -->
+        <nav aria-label="page navigation">
+            <ul class="pagination justify-content-end">
+              <li class="page-item"><a class="page-link"href="?pg=1"><<</a></li>
+              {% if all_tasks.has_previous %}
+                <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.previous_page_number }}">{{ all_tasks.previous_page_number }}</a></li>
+              {% endif %}
+              <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.number }}">{{ all_tasks.number }}</a></li>
+              {% if all_tasks.has_next %}
+                <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.next_page_number }}">{{ all_tasks.next_page_number }}</a></li>
+              {% endif %}
+              <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.paginator.num_pages }}">>></a></li>
+            </ul>
+          </nav>
+
 
 
 </div>
