@@ -53,7 +53,7 @@
                 {% if obj.done %}
 
                     <tr class="table-success">
-                        <td>{{obj.task}} </th>
+                        <td>{{obj.task}} | {{obj.id}}</th>
                         <td>Completed</td>
                         <td>Delete</td>
                         <td>Edit</td>
@@ -62,7 +62,7 @@
                 {% else %}
 
                     <tr>
-                        <td>{{obj.task}} </th>
+                        <td>{{obj.task}} | {{obj.id}} </th>
                         <td>Not Completed</td>
                         <td>Delete</td>
                         <td>Edit</td>
