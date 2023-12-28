@@ -36,44 +36,45 @@
     </form>
 
     <br>
-    <table class="table table-bordered">
+<!-- Table -->
+
+<div class='table mb-4'>
+    <table class="table table-hover table-striped table-bordered text-center">
         <thead class="table-dark">
-          <tr>
-            <th scope="col">Task</th>
-            <th scope="col">Done</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
+            <!-- Table headers are outside of the loop -->
+            <tr class="row">
+                <th class ="col-5">Task</th>
+                <th class ="col-3">Done</th>
+                <th class ="col-2">Edit</th>
+                <th class ="col-2">Delete</th>
+            </tr>
         </thead>
-    <tbody>
-        {% if all_tasks %}
-            {% comment %} Loop through the models taskList models querry {% endcomment %}
+        <tbody>
+            <!-- Foor loop through the database items -->
+            {% if all_tasks %}
             {% for obj in all_tasks %}
-            {% comment %} If object is true {% endcomment %}
-                {% if obj.done %}
-
-                    <tr class="table-success">
-                        <td>{{obj.task}} | {{obj.id}}</th>
-                        <td><a href="{% url 'pending_task' obj.id %}">Mark As Pending</a></td>
-                        <td><a href="{% url 'edit_task' obj.id %}">Edit</a></td>
-                        <td><a href="{% url 'delete_task' obj.id %}">Delete</a></td>
-
-                    </tr>
-
-                {% else %}
-
-                    <tr>
-                        <td>{{obj.task}} | {{obj.id}} </th>
-                        <td><a href="{% url 'complete_task' obj.id %}">Mark As Complete</a></td>
-                        <td><a href="{% url 'edit_task' obj.id %}">Edit</a></td>
-                        <td><a href="{% url 'delete_task' obj.id %}">Delete</a></td>
-
-                    </tr>
-                {% endif %}
+            {% if obj.done %}
+            <tr class="table-success row">
+                <td class ="col-5"><del>{{ obj.task }}</del></td>
+                <td class ="col-3"><a href="{% url 'pending_task' obj.id %}"><button type="button" class="btn btn-dark">Mark As Pending</button></a></td>
+                <td class ="col-2"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                <td class ="col-2"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% else %}
+            <tr class="table-fail row">
+                <td class ="col-5">{{ obj.task }}</td>
+                <td class ="col-3"><a href="{% url 'complete_task' obj.id %}"><button type="button" class="btn btn-dark">Mark As Complete</button></a></td>
+                <td class ="col-2"><a href="{% url 'edit_task' obj.id %}"><button type="button" class="btn btn-warning">Edit</button></a></td>
+                <td class ="col-2"><a href="{% url 'delete_task' obj.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% endif %}
             {% endfor %}
-        {% endif %}
-    </tbody>
+            {% endif %}
+        </tbody>
     </table>
+
+    
+</div>
 
     {% comment %} <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
