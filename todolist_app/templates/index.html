@@ -1,1 +1,12 @@
-<h1>Home Page</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Welcome To Taskmate</title> 
+{% endblock title %}
+
+{% block context %}
+<div class="container">
+    <h1>{{ index_text }}</h1>
+</div>
+<p>Taskmate is a simple task manager app built with Django.</p>
+{% endblock context %}
