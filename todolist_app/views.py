@@ -13,15 +13,11 @@ def todolist(request):
         if form.is_valid():
             form.save()
         messages.success(request, ("New Task Added!"))
+        
         return redirect('todolist')
     
     else:
         all_tasks = TaskList.objects.all()
-        # paginator = Paginator(all_tasks, 5)
-        # page = request.GET.get('pg')
-        # all_tasks = paginator.get_page(page)
-        
-        # return render(request, 'todolist.html', {'all_tasks': all_tasks})
         paginator = Paginator(all_tasks, 5)
         page = request.GET.get('pg')
         all_tasks = paginator.get_page(page)
@@ -58,14 +54,14 @@ def edit_task(request, task_id):
         # instance is used to tell django which object to update
         form = TaskForm(request.POST or None, instance=task)
         if form.is_valid():
-            form.save()
-        
-        
+            form.save()       
         messages.success(request, ("Task Edited!"))
+        
         return redirect('todolist')
     
     else:
         task_obj = TaskList.objects.get(pk=task_id)
+        
         return render(request, 'edit.html', {'task_obj': task_obj})
 
 
