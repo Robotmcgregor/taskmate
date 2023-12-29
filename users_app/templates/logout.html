@@ -1,0 +1,8 @@
+<!-- FILEPATH: /c:/Users/robot/pydjango/django_project2/taskmate/users_app/templates/logout.html -->
+
+<h1>Logout Page</h1>
+<p>Are you sure you want to logout?</p>
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
