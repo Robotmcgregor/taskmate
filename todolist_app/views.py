@@ -32,15 +32,25 @@ def todolist(request):
 @login_required    
 def delete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
-    task.delete()
+    # check if the task is created by the current user
+    if task.manage == request.user:
+        task.delete()
+    else:
+        # if not created by the current user, show error message
+        messages.error(request, ("Access Restricted, You are not allowed to edit this task."))
     
     return redirect('todolist')
 
 @login_required
 def complete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
-    task.done = True
-    task.save()
+    # check if the task is created by the current user
+    if task.manage == request.user:
+        task.done = True
+        task.save()
+    else:
+        # if not created by the current user, show error message
+        messages.error(request, ("Access Restricted, You are not allowed to edit this task."))
     
     return redirect('todolist')
 
