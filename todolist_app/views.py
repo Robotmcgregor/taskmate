@@ -11,6 +11,10 @@ def todolist(request):
     if request.method == "POST":
         form = TaskForm(request.POST or None)
         if form.is_valid():
+            # save(commit=False) is used to tell django not to save the form yet
+            instance = form.save(commit=False)
+            # we are setting the manage field to the current user
+            instance.manage = request.user
             form.save()
         messages.success(request, ("New Task Added!"))
         
