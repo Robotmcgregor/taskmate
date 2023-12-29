@@ -1,8 +1,33 @@
-<!-- FILEPATH: /c:/Users/robot/pydjango/django_project2/taskmate/users_app/templates/logout.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
-<h1>Logout Page</h1>
-<p>Are you sure you want to logout?</p>
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+{% block title %}
+    <title>Logout - Taskmate</title> 
+{% endblock title %}
+
+{% block context %}
+        {% comment %} <div class="container mt-5">
+            <h2>Login To TaskMate</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show col-6" role="alert">
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST" class="mt-5 col-6">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn btn-primary">Login</button>
+
+        </div> {% endcomment %}
+        <div class="container mt-5">
+            <h4>Logged Out Of TaskMate</h4>
+
+
+        </div>
+               
+{% endblock context %}

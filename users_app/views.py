@@ -9,8 +9,8 @@ def register(request):
             register_form.save()
             messages.success(request, ("New User Account Created, Login To Get Started!"))
             
-            return redirect('register')            
+            return redirect('login')            
     else:
         register_form = CustomUserCreationForm()
 
-        return render(request, 'register.html', {'register_form':register_form})
+    return render(request, 'register.html', {'register_form':register_form})
