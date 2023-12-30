@@ -37,7 +37,7 @@ DEBUG = env('DJANGO_DEBUG')
 # remove https and ending slash
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", 
                  "taskmate-production-a129.up.railway.app", 
-                 #"https://taskmate-production-a129.up.railway.app", 
+                 "https://taskmate-production-a129.up.railway.app", 
                  ]
 
 
