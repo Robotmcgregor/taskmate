@@ -93,28 +93,16 @@ WSGI_APPLICATION = 'taskmate.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': env('POSTGRESQL_NAME'),
-#         'USER': env('POSTGRESQL_USER'),
-#         'PASSWORD': env('POSTGRESQL_PASSWORD'),
-#         'HOST': env('POSTGRESQL_HOST'),
-#         'PORT': env('POSTGRESQL_PORT'),
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'e2CAgC66geceG2G21d6211ce3aC2ECFE',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '54514',
+        'NAME': env('POSTGRESQL_NAME'),
+        'USER': env('POSTGRESQL_USER'),
+        'PASSWORD': env('POSTGRESQL_PASSWORD'),
+        'HOST': env('POSTGRESQL_HOST'),
+        'PORT': env('POSTGRESQL_PORT'),
     }
 }
-# postgresql://postgres:e2CAgC66geceG2G21d6211ce3aC2ECFE@postgres.railway.internal:5432/railway
 
 
 # Password validation
