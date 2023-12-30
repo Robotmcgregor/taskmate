@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 import environ
 
 # reading .env file
@@ -21,7 +22,7 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+DATABASE_URL = "postgresql://postgres:Cdeb1fBddBf2C*ceGCD664Ga6cAdgcfF@roundhouse.proxy.rlwy.net:43104/railway"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -99,16 +100,18 @@ WSGI_APPLICATION = 'taskmate.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('POSTGRESQL_NAME'),
-        'USER': env('POSTGRESQL_USER'),
-        'PASSWORD': env('POSTGRESQL_PASSWORD'),
-        'HOST': env('POSTGRESQL_HOST'),
-        'PORT': env('POSTGRESQL_PORT'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env('POSTGRESQL_NAME'),
+#         'USER': env('POSTGRESQL_USER'),
+#         'PASSWORD': env('POSTGRESQL_PASSWORD'),
+#         'HOST': env('POSTGRESQL_HOST'),
+#         'PORT': env('POSTGRESQL_PORT'),
+#     }
+# }
+DATABASES = {"default": dj_database_url.config(default= DATABASE_URL, conn_max_age=1800),
+             }
 
 
 # Password validation
