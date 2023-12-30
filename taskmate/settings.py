@@ -33,7 +33,9 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 DEBUG = env('DJANGO_DEBUG')
 
 # domains where the project will function
-ALLOWED_HOSTS = ["*"]
+# remove https and ending slash
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "web-production-9b5c.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["web-production-9b5c.up.railway.app"]
 
 
 # Application definition
