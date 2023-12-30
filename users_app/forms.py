@@ -1,12 +1,12 @@
 from django import forms
-from django.contrib.auth import forms
+#from django.contrib.auth import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
 #original django form
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(label='Email Address', required=True)
+    email = forms.EmailField(label='Email Address', required=False)
     #birth_date = forms.DateField(label='Birth Date', required=True)
     class Meta:
         model = User
