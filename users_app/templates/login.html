@@ -6,25 +6,10 @@
 {% endblock title %}
 
 {% block context %}
+
+        {% comment %} Old code {% endcomment %}
+
         {% comment %} <div class="container mt-5">
-            <h2>Login To TaskMate</h2>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-success alert-dismissible fade show col-6" role="alert">
-                        {{message}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                        </button>
-                    </div>
-                {% endfor %}
-            {% endif %}
-
-            <form method="POST" class="mt-5 col-6">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <button type="submit" class="btn btn-primary">Login</button>
-
-        </div> {% endcomment %}
-        <div class="container mt-5">
             <h2>Login On TaskMate</h2>
             {% if messages %}
                 {% for message in messages %}
@@ -41,6 +26,25 @@
                 {{ form | crispy }}
                 <button type="submit" class="btn btn-primary">Login</button>
 
+        </div> {% endcomment %}
+
+        {% comment %} New code {% endcomment %}
+        <div class="container mt-5 ">
+            <h2 class= "col-md-6 offset-md-3">Login To TaskMate</h2>
+            <div class="col-md-6 offset-md-3">
+        <form>
+            <div class="mb-3">
+              <input type="user" class="form-control" placeholder="Enter Username">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+
+              <input type="password" class="form-control" placeholder="Enter Password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+            </div>
         </div>
                
 {% endblock context %}

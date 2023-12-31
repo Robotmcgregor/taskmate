@@ -31,7 +31,8 @@ DATABASE_URL = "postgresql://postgres:Cdeb1fBddBf2C*ceGCD664Ga6cAdgcfF@roundhous
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DJANGO_DEBUG')
+#DEBUG = env('DJANGO_DEBUG')
+DEBUG = True
 
 # domains where the project will function
 # remove https and ending slash
@@ -162,8 +163,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Directory where uploaded media is saved.
+MEDIA_URL = '/media/' # Public URL at the browser
+
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
-LOGIN_REDIRECT_URL = 'todolist'
+LOGIN_REDIRECT_URL = 'profile' #'todolist'
 LOGIN_URL = 'login'
