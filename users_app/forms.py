@@ -6,12 +6,18 @@ from django.contrib.auth.models import User
 
 #original django form
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(label='Email Address', required=False)
+    email = forms.EmailField(label='Email Address', required=True)
+    first_name = forms.CharField(label='First Name', required=False)
+    last_name = forms.CharField(label='Last Name', required=False)
     #birth_date = forms.DateField(label='Birth Date', required=True)
     class Meta:
         model = User
-        fields = ['username', 
+        fields = [
+                  'first_name',
+                  'last_name',
+                  'username', 
                   'email', 
+                  
                   #'birth_date', 
                   'password1', 
                   'password2']
