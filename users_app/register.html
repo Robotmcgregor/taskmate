@@ -1,15 +1,10 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% extends 'authenticate/base.html' %}
 
-{% block title %}
-    <title>Register - Taskmate</title> 
-{% endblock title %}
-
-{% block context %}
+{% block content %}
 
 <h2 class="text-center">Register</h2>
 
-<div class="container mt-5 col-md-4 mx-auto">
+<div class="col-md-6 offset-md-3">
 	<form method="POST" action="{% url 'register' %}">
 		{% csrf_token %}
 
@@ -32,7 +27,7 @@
 		{% endif %}
 		
        
-			{{ form | crispy }}
+			{{ form.as_p }}
 
 		<input type="submit" value="Register" class="btn btn-secondary">
 	</form>
