@@ -12,6 +12,7 @@ urlpatterns = [
     path('profile/', user_views.profile, name="profile"),
     path('edit-profile/', user_views.edit_profile, name="edit_profile"),
     path('change-password/', user_views.change_password, name="change_password"),
+    path('profile-list/', user_views.profile_list, name="profile_list"),
 
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

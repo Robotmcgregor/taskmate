@@ -4,9 +4,21 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib import messages 
 from .forms import SignUpForm, EditProfileForm
 from django.contrib.auth.decorators import login_required
+from users_app.models import Profile
 
 def index(request):
 	return render(request, 'index.html', {})
+
+@login_required
+def profile_list(request):
+    if request.user.is_authenticated:
+        profiles = Profile.objects.exclude(user=request.user)
+        context = {"profiles": profiles}
+        return render(request, 'profile_list.html', context)
+    else:
+        messages.success(request, ('You Must Be Logged In To View Profiles...'))
+        return redirect('login')
+
 
 def login_user(request):
 	if request.method == 'POST':
