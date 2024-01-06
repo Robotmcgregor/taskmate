@@ -31,8 +31,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = env('DJANGO_DEBUG')
-DEBUG = True
+DEBUG = env('DJANGO_DEBUG')
+#DEBUG = True
 
 # domains where the project will function
 # remove https and ending slash
@@ -104,16 +104,16 @@ WSGI_APPLICATION = 'taskmate.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('POSTGRESQL_NAME'),
-        'USER': env('POSTGRESQL_USER'),
-        'PASSWORD': env('POSTGRESQL_PASSWORD'),
-        'HOST': env('POSTGRESQL_HOST'),
-        'PORT': env('POSTGRESQL_PORT'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env('POSTGRESQL_NAME'),
+#         'USER': env('POSTGRESQL_USER'),
+#         'PASSWORD': env('POSTGRESQL_PASSWORD'),
+#         'HOST': env('POSTGRESQL_HOST'),
+#         'PORT': env('POSTGRESQL_PORT'),
+#     }
+# }
 
 # DATABASES = {"default": dj_database_url.config(default= DATABASE_URL, conn_max_age=1800),
 #              }
