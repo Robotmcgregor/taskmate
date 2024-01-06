@@ -22,7 +22,7 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#DATABASE_URL = "postgresql://postgres:Cdeb1fBddBf2C*ceGCD664Ga6cAdgcfF@roundhouse.proxy.rlwy.net:43104/railway"
+DATABASE_URL = "postgresql://postgres:Cdeb1fBddBf2C*ceGCD664Ga6cAdgcfF@roundhouse.proxy.rlwy.net:43104/railway"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -97,13 +97,8 @@ WSGI_APPLICATION = 'taskmate.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
+# local
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -115,21 +110,21 @@ WSGI_APPLICATION = 'taskmate.wsgi.application'
 #     }
 # }
 
+# railway
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env('POSTGRES_DB'),
+#         'USER': env('PGUSER'),
+#         'PASSWORD': env('PGPASSWORD'),
+#         'HOST': env('PGHOST'),
+#         'PORT': env('PGPORT'),
+#     }
+# }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('POSTGRES_DB'),
-        'USER': env('PGUSER'),
-        'PASSWORD': env('PGPASSWORD'),
-        'HOST': env('PGHOST'),
-        'PORT': env('PGPORT'),
-    }
-}
-
-
-# DATABASES = {"default": dj_database_url.config(default= DATABASE_URL, conn_max_age=1800),
-#              }
+# railway alternative
+DATABASES = {"default": dj_database_url.config(default= DATABASE_URL, conn_max_age=1800),
+             }
 
 
 # Password validation
