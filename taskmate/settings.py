@@ -115,6 +115,19 @@ WSGI_APPLICATION = 'taskmate.wsgi.application'
 #     }
 # }
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('PGUSER'),
+        'PASSWORD': env('PGPASSWORD'),
+        'HOST': env('PGHOST'),
+        'PORT': env('PGPORT'),
+    }
+}
+
+
 # DATABASES = {"default": dj_database_url.config(default= DATABASE_URL, conn_max_age=1800),
 #              }
 
